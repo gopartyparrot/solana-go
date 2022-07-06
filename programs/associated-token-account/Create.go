@@ -176,7 +176,9 @@ func (inst *Create) EncodeToTree(parent treeout.Branches) {
 						accountsBranch.Child(format.Meta("             tokenMint", inst.AccountMetaSlice[3]))
 						accountsBranch.Child(format.Meta("         systemProgram", inst.AccountMetaSlice[4]))
 						accountsBranch.Child(format.Meta("          tokenProgram", inst.AccountMetaSlice[5]))
-						accountsBranch.Child(format.Meta("            sysVarRent", inst.AccountMetaSlice[6]))
+						if len(inst.AccountMetaSlice) > 6 {
+							accountsBranch.Child(format.Meta("            sysVarRent", inst.AccountMetaSlice[6]))
+						}
 					})
 				})
 		})
